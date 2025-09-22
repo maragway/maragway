@@ -24,7 +24,7 @@ async def forward_thread(event):
 # =========================
 # Keep-Alive через Flask
 # =========================
-app = Flask('')
+app = Flask(__name__)
 
 @app.route('/')
 def home():
