@@ -1,1 +1,1 @@
-web: gunicorn main:app
+web: gunicorn telegramreplymonitor.main:app
