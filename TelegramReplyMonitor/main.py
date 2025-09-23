@@ -13,7 +13,7 @@ phone = os.environ['PHONE']
 client = TelegramClient('session', api_id, api_hash)
 
 # Укажи username или ID группы
-group = '@testovayasssss'  # можно заменить на -100XXXXXXXXXX
+group = '-100473771399'  # можно заменить на -100XXXXXXXXXX
 
 # =========================
 # Логируем все сообщения группы
