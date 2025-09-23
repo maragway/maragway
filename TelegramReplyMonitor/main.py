@@ -12,8 +12,8 @@ phone = os.environ['PHONE']
 
 client = TelegramClient('session', api_id, api_hash)
 
-group = 'Event_community_irkutsk'
-message_id = 18540
+group = 'testovayasssss'
+message_id = 4
 
 @client.on(events.NewMessage(chats=group))
 async def forward_thread(event):
