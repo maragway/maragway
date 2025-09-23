@@ -12,29 +12,34 @@ phone = os.environ['PHONE']
 
 client = TelegramClient('session', api_id, api_hash)
 
-group = 'testovayasssss'
-message_id = 4
+# Укажи username или ID группы
+group = '@testovayasssss'  # можно заменить на -100XXXXXXXXXX
 
+# =========================
+# Логируем все сообщения группы
+# =========================
 @client.on(events.NewMessage(chats=group))
-async def forward_thread(event):
-    if event.message.is_reply:
-        if event.message.reply_to_msg_id == message_id:
-            await client.send_message('me', f"Новый ответ: {event.message.text}")
+async def handler(event):
+    print("Получено сообщение:", event.message.text)  # проверка в логах Render
+    await client.send_message('me', f"Из группы: {event.message.text}")  # пересылаем себе
 
 # =========================
 # Keep-Alive через Flask
 # =========================
-app = Flask(__name__)
+app = Flask('')
 
 @app.route('/')
 def home():
     return "I'm alive!"
 
-def run_flask():
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+def run():
+    app.run(host='0.0.0.0', port=8080)
 
-Thread(target=run_flask).start()
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+keep_alive()
 
 # =========================
 # Запуск Telethon
